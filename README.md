@@ -1,5 +1,7 @@
 # meridian
 
+<img src="./demo.png" alt="Meridian Demo" width="360"/>
+
 contemporary industrial style component library
 
 ## Installation
