@@ -1,26 +1,624 @@
+/*
+ * Meridian Design System
+ * Industrial Manufacturing Aesthetic
+ * 
+ * Color grading derived from classic manufacturing contexts:
+ * - Safety markings (caution yellow, danger red, operational green)
+ * - Machine surfaces (raw steel, graphite, oxide)
+ * - Technical documentation (ink on paper)
+ */
+
+/* ============================================
+   DESIGN TOKENS
+   ============================================ */
+
 :root {
-	--button-bg: hsl(211, 100%, 50%);
-	--button-bg-hover: hsl(211, 100%, 45%);
+	/* --- Typography --- */
+	--font-mono:
+		ui-monospace, "SF Mono", "Cascadia Code", "Segoe UI Mono", "Roboto Mono",
+		Menlo, Monaco, Consolas, monospace;
+	--font-sans: var(--font-mono); /* Default to mono, users can override */
+
+	/* --- Font Scale (4pt base) --- */
+	--text-xs: 0.6875rem; /* 11px */
+	--text-sm: 0.75rem; /* 12px */
+	--text-base: 0.875rem; /* 14px */
+	--text-lg: 1rem; /* 16px */
+	--text-xl: 1.125rem; /* 18px */
+	--text-2xl: 1.5rem; /* 24px */
+	--text-3xl: 2rem; /* 32px */
+
+	/* --- Line Heights --- */
+	--leading-tight: 1.2;
+	--leading-normal: 1.5;
+	--leading-relaxed: 1.75;
+
+	/* --- Font Weights --- */
+	--weight-normal: 400;
+	--weight-medium: 500;
+	--weight-semibold: 600;
+	--weight-bold: 700;
+
+	/* --- Spacing Scale (4pt) --- */
+	--space-0: 0;
+	--space-1: 0.25rem; /* 4px */
+	--space-2: 0.5rem; /* 8px */
+	--space-3: 0.75rem; /* 12px */
+	--space-4: 1rem; /* 16px */
+	--space-5: 1.25rem; /* 20px */
+	--space-6: 1.5rem; /* 24px */
+	--space-8: 2rem; /* 32px */
+	--space-10: 2.5rem; /* 40px */
+	--space-12: 3rem; /* 48px */
+
+	/* --- Manufacturing Color Palette (Light Mode) --- */
+
+	/* Surface colors - raw materials */
+	--color-background: hsl(40, 10%, 96%); /* Off-white paper/sheet metal */
+	--color-surface: hsl(40, 8%, 92%); /* Slightly darker surface */
+	--color-surface-raised: hsl(40, 6%, 98%); /* Elevated surface */
+
+	/* Text colors - technical ink */
+	--color-foreground: hsl(0, 0%, 8%); /* Near-black ink */
+	--color-muted: hsl(0, 0%, 40%); /* Faded print */
+	--color-subtle: hsl(0, 0%, 56%); /* Watermark/secondary */
+
+	/* Border colors - oxide/graphite */
+	--color-border: hsl(0, 0%, 72%); /* Standard border */
+	--color-border-strong: hsl(0, 0%, 40%); /* Emphasized border */
+	--color-border-subtle: hsl(0, 0%, 84%); /* Subtle divider */
+
+	/* Accent - industrial safety yellow (use sparingly) */
+	--color-accent: hsl(48, 96%, 50%); /* Caution yellow */
+	--color-accent-foreground: hsl(0, 0%, 8%); /* Text on accent */
+
+	/* Status colors - manufacturing signals */
+	--color-success: hsl(142, 52%, 36%); /* Operational green */
+	--color-success-subtle: hsl(142, 40%, 92%);
+	--color-warning: hsl(38, 92%, 50%); /* Caution amber */
+	--color-warning-subtle: hsl(38, 80%, 92%);
+	--color-danger: hsl(0, 72%, 44%); /* Stop/danger red */
+	--color-danger-subtle: hsl(0, 60%, 94%);
+	--color-info: hsl(210, 40%, 45%); /* Information blue-gray */
+	--color-info-subtle: hsl(210, 30%, 94%);
+
+	/* Interactive states */
+	--color-focus: hsl(210, 100%, 45%); /* Focus ring - high contrast */
+	--color-disabled: hsl(0, 0%, 64%); /* Disabled state */
+	--color-disabled-bg: hsl(0, 0%, 88%); /* Disabled background */
+
+	/* --- Borders --- */
+	--border-width: 1px;
+	--border-width-thick: 2px;
+
+	/* --- Transitions (functional only) --- */
+	--transition-fast: 100ms ease-out;
+	--transition-base: 150ms ease-out;
 }
 
+/* --- Dark Mode --- */
 @media (prefers-color-scheme: dark) {
 	:root {
-		--button-bg: hsl(211, 80%, 55%);
-		--button-bg-hover: hsl(211, 80%, 60%);
+		/* Surface colors - machined metal */
+		--color-background: hsl(0, 0%, 6%); /* Deep black */
+		--color-surface: hsl(0, 0%, 10%); /* Slightly lighter */
+		--color-surface-raised: hsl(0, 0%, 14%); /* Elevated */
+
+		/* Text colors */
+		--color-foreground: hsl(40, 6%, 92%); /* Off-white */
+		--color-muted: hsl(0, 0%, 64%); /* Dimmed */
+		--color-subtle: hsl(0, 0%, 48%); /* Very dimmed */
+
+		/* Border colors */
+		--color-border: hsl(0, 0%, 28%); /* Standard */
+		--color-border-strong: hsl(0, 0%, 52%); /* Emphasized */
+		--color-border-subtle: hsl(0, 0%, 18%); /* Subtle */
+
+		/* Accent */
+		--color-accent: hsl(48, 92%, 55%);
+		--color-accent-foreground: hsl(0, 0%, 6%);
+
+		/* Status colors - adjusted for dark */
+		--color-success: hsl(142, 48%, 44%);
+		--color-success-subtle: hsl(142, 30%, 14%);
+		--color-warning: hsl(38, 88%, 55%);
+		--color-warning-subtle: hsl(38, 40%, 14%);
+		--color-danger: hsl(0, 68%, 52%);
+		--color-danger-subtle: hsl(0, 40%, 14%);
+		--color-info: hsl(210, 36%, 55%);
+		--color-info-subtle: hsl(210, 20%, 14%);
+
+		/* Interactive */
+		--color-focus: hsl(210, 100%, 55%);
+		--color-disabled: hsl(0, 0%, 40%);
+		--color-disabled-bg: hsl(0, 0%, 16%);
 	}
 }
 
-[data-slot="button"] {
-	background: var(--button-bg);
-	color: hsl(0, 0%, 100%);
-	padding: 0.6rem 1.2rem;
-	border: none;
-	border-radius: 0.5rem;
-	cursor: pointer;
-	font-size: 0.875rem;
-	font-weight: 400;
+/* ============================================
+   BASE RESET
+   ============================================ */
+
+[data-slot] {
+	box-sizing: border-box;
+	font-family: var(--font-sans);
+	border-radius: 0;
 }
 
-[data-slot="button"]:hover {
-	background: var(--button-bg-hover);
+/* ============================================
+   BUTTON
+   ============================================ */
+
+[data-slot="button"] {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--space-2);
+	padding: var(--space-2) var(--space-4);
+	font-family: var(--font-sans);
+	font-size: var(--text-sm);
+	font-weight: var(--weight-medium);
+	line-height: var(--leading-tight);
+	text-transform: uppercase;
+	letter-spacing: 0.025em;
+	border: var(--border-width) solid transparent;
+	cursor: pointer;
+	transition:
+		background var(--transition-fast),
+		border-color var(--transition-fast);
+	-webkit-font-smoothing: antialiased;
+}
+
+[data-slot="button"]:focus-visible {
+	outline: var(--border-width-thick) solid var(--color-focus);
+	outline-offset: 2px;
+}
+
+[data-slot="button"]:disabled {
+	cursor: not-allowed;
+	background: var(--color-disabled-bg);
+	color: var(--color-disabled);
+	border-color: transparent;
+}
+
+/* Button: Primary (default) */
+[data-slot="button"][data-intent="primary"],
+[data-slot="button"]:not([data-intent]) {
+	background: var(--color-foreground);
+	color: var(--color-background);
+	border-color: var(--color-foreground);
+}
+
+[data-slot="button"][data-intent="primary"]:hover:not(:disabled),
+[data-slot="button"]:not([data-intent]):hover:not(:disabled) {
+	background: var(--color-muted);
+	border-color: var(--color-muted);
+}
+
+[data-slot="button"][data-intent="primary"]:active:not(:disabled),
+[data-slot="button"]:not([data-intent]):active:not(:disabled) {
+	background: var(--color-foreground);
+	border-color: var(--color-foreground);
+}
+
+/* Button: Secondary */
+[data-slot="button"][data-intent="secondary"] {
+	background: transparent;
+	color: var(--color-foreground);
+	border-color: var(--color-border-strong);
+}
+
+[data-slot="button"][data-intent="secondary"]:hover:not(:disabled) {
+	background: var(--color-surface);
+	border-color: var(--color-foreground);
+}
+
+[data-slot="button"][data-intent="secondary"]:active:not(:disabled) {
+	background: var(--color-border-subtle);
+}
+
+/* Button: Danger */
+[data-slot="button"][data-intent="danger"] {
+	background: var(--color-danger);
+	color: hsl(0, 0%, 100%);
+	border-color: var(--color-danger);
+}
+
+[data-slot="button"][data-intent="danger"]:hover:not(:disabled) {
+	background: hsl(0, 72%, 38%);
+	border-color: hsl(0, 72%, 38%);
+}
+
+/* Button: Ghost */
+[data-slot="button"][data-intent="ghost"] {
+	background: transparent;
+	color: var(--color-foreground);
+	border-color: transparent;
+}
+
+[data-slot="button"][data-intent="ghost"]:hover:not(:disabled) {
+	background: var(--color-surface);
+}
+
+/* ============================================
+   INPUT
+   ============================================ */
+
+[data-slot="input"] {
+	display: block;
+	width: 100%;
+	padding: var(--space-2) var(--space-3);
+	font-family: var(--font-sans);
+	font-size: var(--text-sm);
+	line-height: var(--leading-normal);
+	color: var(--color-foreground);
+	background: var(--color-background);
+	border: var(--border-width) solid var(--color-border);
+	transition: border-color var(--transition-fast);
+	-webkit-font-smoothing: antialiased;
+}
+
+[data-slot="input"]::placeholder {
+	color: var(--color-subtle);
+}
+
+[data-slot="input"]:hover:not(:disabled):not(:focus) {
+	border-color: var(--color-border-strong);
+}
+
+[data-slot="input"]:focus {
+	outline: none;
+	border-color: var(--color-foreground);
+}
+
+[data-slot="input"]:disabled {
+	cursor: not-allowed;
+	background: var(--color-disabled-bg);
+	color: var(--color-disabled);
+	border-color: var(--color-border-subtle);
+}
+
+[data-slot="input"][aria-invalid="true"] {
+	border-color: var(--color-danger);
+}
+
+/* ============================================
+   LABEL
+   ============================================ */
+
+[data-slot="label"] {
+	display: block;
+	font-family: var(--font-sans);
+	font-size: var(--text-xs);
+	font-weight: var(--weight-medium);
+	line-height: var(--leading-tight);
+	color: var(--color-muted);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	-webkit-font-smoothing: antialiased;
+}
+
+[data-slot="label"][data-required="true"]::after {
+	content: " *";
+	color: var(--color-danger);
+}
+
+/* ============================================
+   BADGE
+   ============================================ */
+
+[data-slot="badge"] {
+	display: inline-flex;
+	align-items: center;
+	padding: var(--space-1) var(--space-2);
+	font-family: var(--font-sans);
+	font-size: var(--text-xs);
+	font-weight: var(--weight-medium);
+	line-height: 1;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	border: var(--border-width) solid transparent;
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Badge: Default */
+[data-slot="badge"]:not([data-variant]) {
+	background: var(--color-surface);
+	color: var(--color-foreground);
+	border-color: var(--color-border);
+}
+
+/* Badge: Success */
+[data-slot="badge"][data-variant="success"] {
+	background: var(--color-success-subtle);
+	color: var(--color-success);
+	border-color: var(--color-success);
+}
+
+/* Badge: Warning */
+[data-slot="badge"][data-variant="warning"] {
+	background: var(--color-warning-subtle);
+	color: hsl(30, 80%, 28%);
+	border-color: var(--color-warning);
+}
+
+@media (prefers-color-scheme: dark) {
+	[data-slot="badge"][data-variant="warning"] {
+		color: var(--color-warning);
+	}
+}
+
+/* Badge: Danger */
+[data-slot="badge"][data-variant="danger"] {
+	background: var(--color-danger-subtle);
+	color: var(--color-danger);
+	border-color: var(--color-danger);
+}
+
+/* Badge: Info */
+[data-slot="badge"][data-variant="info"] {
+	background: var(--color-info-subtle);
+	color: var(--color-info);
+	border-color: var(--color-info);
+}
+
+/* ============================================
+   CARD
+   ============================================ */
+
+[data-slot="card"] {
+	display: block;
+	background: var(--color-surface-raised);
+	border: var(--border-width) solid var(--color-border);
+}
+
+[data-slot="card-header"] {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-1);
+	padding: var(--space-4);
+	border-bottom: var(--border-width) solid var(--color-border-subtle);
+}
+
+[data-slot="card-title"] {
+	margin: 0;
+	font-family: var(--font-sans);
+	font-size: var(--text-base);
+	font-weight: var(--weight-semibold);
+	line-height: var(--leading-tight);
+	color: var(--color-foreground);
+}
+
+[data-slot="card-description"] {
+	margin: 0;
+	font-family: var(--font-sans);
+	font-size: var(--text-sm);
+	line-height: var(--leading-normal);
+	color: var(--color-muted);
+}
+
+[data-slot="card-content"] {
+	padding: var(--space-4);
+}
+
+[data-slot="card-footer"] {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	padding: var(--space-4);
+	border-top: var(--border-width) solid var(--color-border-subtle);
+}
+
+/* ============================================
+   SEPARATOR
+   ============================================ */
+
+[data-slot="separator"] {
+	flex-shrink: 0;
+	margin: 0;
+	border: none;
+	background: var(--color-border);
+}
+
+[data-slot="separator"][data-orientation="horizontal"] {
+	height: var(--border-width);
+	width: 100%;
+}
+
+[data-slot="separator"][data-orientation="vertical"] {
+	width: var(--border-width);
+	height: 100%;
+}
+
+/* ============================================
+   HEADING
+   ============================================ */
+
+[data-slot="heading"] {
+	margin: 0;
+	font-family: var(--font-sans);
+	font-weight: var(--weight-semibold);
+	line-height: var(--leading-tight);
+	color: var(--color-foreground);
+	letter-spacing: -0.01em;
+	-webkit-font-smoothing: antialiased;
+}
+
+[data-slot="heading"][data-level="1"] {
+	font-size: var(--text-3xl);
+	font-weight: var(--weight-bold);
+}
+
+[data-slot="heading"][data-level="2"] {
+	font-size: var(--text-2xl);
+}
+
+[data-slot="heading"][data-level="3"] {
+	font-size: var(--text-xl);
+}
+
+[data-slot="heading"][data-level="4"] {
+	font-size: var(--text-lg);
+}
+
+[data-slot="heading"][data-level="5"] {
+	font-size: var(--text-base);
+}
+
+[data-slot="heading"][data-level="6"] {
+	font-size: var(--text-sm);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+/* ============================================
+   TEXT
+   ============================================ */
+
+[data-slot="text"] {
+	margin: 0;
+	font-family: var(--font-sans);
+	line-height: var(--leading-normal);
+	color: var(--color-foreground);
+	-webkit-font-smoothing: antialiased;
+}
+
+[data-slot="text"][data-size="xs"] {
+	font-size: var(--text-xs);
+}
+
+[data-slot="text"][data-size="sm"] {
+	font-size: var(--text-sm);
+}
+
+[data-slot="text"][data-size="base"],
+[data-slot="text"]:not([data-size]) {
+	font-size: var(--text-base);
+}
+
+[data-slot="text"][data-size="lg"] {
+	font-size: var(--text-lg);
+}
+
+[data-slot="text"][data-muted="true"] {
+	color: var(--color-muted);
+}
+
+/* ============================================
+   SWITCH
+   ============================================ */
+
+[data-slot="switch"] {
+	position: relative;
+	display: inline-flex;
+	width: 2.5rem;
+	height: 1.25rem;
+	padding: 2px;
+	background: var(--color-border);
+	border: var(--border-width) solid var(--color-border-strong);
+	cursor: pointer;
+	transition:
+		background var(--transition-fast),
+		border-color var(--transition-fast);
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+[data-slot="switch"]::before {
+	content: "";
+	display: block;
+	width: calc(1.25rem - 6px);
+	height: calc(1.25rem - 6px);
+	background: var(--color-foreground);
+	transition: transform var(--transition-base);
+}
+
+[data-slot="switch"]:checked {
+	background: var(--color-foreground);
+	border-color: var(--color-foreground);
+}
+
+[data-slot="switch"]:checked::before {
+	background: var(--color-background);
+	transform: translateX(calc(2.5rem - 1.25rem - 2px));
+}
+
+[data-slot="switch"]:focus-visible {
+	outline: var(--border-width-thick) solid var(--color-focus);
+	outline-offset: 2px;
+}
+
+[data-slot="switch"]:disabled {
+	cursor: not-allowed;
+	background: var(--color-disabled-bg);
+	border-color: var(--color-border-subtle);
+}
+
+[data-slot="switch"]:disabled::before {
+	background: var(--color-disabled);
+}
+
+/* ============================================
+   CHECKBOX
+   ============================================ */
+
+[data-slot="checkbox"] {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 1rem;
+	height: 1rem;
+	background: var(--color-background);
+	border: var(--border-width) solid var(--color-border-strong);
+	cursor: pointer;
+	transition:
+		background var(--transition-fast),
+		border-color var(--transition-fast);
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+[data-slot="checkbox"]::before {
+	content: "";
+	display: block;
+	width: 0.5rem;
+	height: 0.5rem;
+	background: transparent;
+	transition: background var(--transition-fast);
+}
+
+[data-slot="checkbox"]:checked {
+	background: var(--color-foreground);
+	border-color: var(--color-foreground);
+}
+
+[data-slot="checkbox"]:checked::before {
+	background: var(--color-background);
+}
+
+[data-slot="checkbox"]:focus-visible {
+	outline: var(--border-width-thick) solid var(--color-focus);
+	outline-offset: 2px;
+}
+
+[data-slot="checkbox"]:disabled {
+	cursor: not-allowed;
+	background: var(--color-disabled-bg);
+	border-color: var(--color-border-subtle);
+}
+
+[data-slot="checkbox"]:disabled:checked::before {
+	background: var(--color-disabled);
+}
+
+[data-slot="checkbox"]:indeterminate {
+	background: var(--color-foreground);
+	border-color: var(--color-foreground);
+}
+
+[data-slot="checkbox"]:indeterminate::before {
+	width: 0.5rem;
+	height: 2px;
+	background: var(--color-background);
 }
