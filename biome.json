@@ -1,5 +1,16 @@
 {
 	"$schema": "https://biomejs.dev/schemas/2.3.11/schema.json",
+	"overrides": [
+		{
+			"includes": ["docs/src/components/*.astro"],
+			"linter": {
+				"enabled": false
+			},
+			"formatter": {
+				"enabled": false
+			}
+		}
+	],
 	"assist": {
 		"enabled": true,
 		"actions": {

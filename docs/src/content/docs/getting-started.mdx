@@ -1,38 +1,50 @@
 ---
-title: Getting Started
-description: Install and configure Meridian in your React project
+title: installation
+description: install and configure meridian in your react project
 ---
 
-## Installation
+## installation
 
-Install Meridian using your preferred package manager:
+install meridian directly from the github repository:
 
 ```bash
+# bun
+bun add github:bxrne/meridian
+
 # npm
-npm install meridian
+npm install github:bxrne/meridian
 
 # pnpm
-pnpm add meridian
-
-# bun
-bun add meridian
+pnpm add github:bxrne/meridian
 
 # yarn
-yarn add meridian
+yarn add github:bxrne/meridian
 ```
 
-## Setup
+### pinning a version
 
-Import the CSS styles in your application's entry point:
+to pin to a specific release tag or commit:
+
+```bash
+# pin to a release tag
+bun add github:bxrne/meridian#v0.1.0
+
+# pin to a specific commit
+bun add github:bxrne/meridian#abc1234
+```
+
+## setup
+
+import the CSS styles in your application's entry point:
 
 ```tsx
 // main.tsx or App.tsx
 import 'meridian/styles.css';
 ```
 
-## Usage
+## usage
 
-Import and use components directly:
+import and use components directly:
 
 ```tsx
 import { Button, Badge, Card, CardHeader, CardTitle, CardContent } from 'meridian';
@@ -41,43 +53,47 @@ function App() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>System Status</CardTitle>
+        <CardTitle>system status</CardTitle>
       </CardHeader>
       <CardContent>
-        <Badge variant="success">Operational</Badge>
-        <Button intent="primary">View Details</Button>
+        <Badge variant="success">operational</Badge>
+        <Button intent="primary">view details</Button>
       </CardContent>
     </Card>
   );
 }
 ```
 
-## TypeScript
+## typescript
 
-Meridian is written in TypeScript and exports all prop types:
+meridian is written in typescript and exports all prop types:
 
 ```tsx
 import type { ButtonProps, ButtonIntent, BadgeVariant } from 'meridian';
 
-// Use types for custom wrappers
+// use types for custom wrappers
 const MyButton = (props: ButtonProps) => {
   return <Button {...props} />;
 };
 ```
 
-## Styling
+## styling
 
-Meridian uses CSS custom properties (variables) for theming. You can override these in your own CSS:
+meridian uses CSS custom properties (variables) for theming. you can override these in your own CSS:
 
 ```css
 :root {
-  /* Override the accent color */
+  /* override the accent color */
   --color-accent: hsl(200, 90%, 50%);
   
-  /* Use a different font stack */
+  /* use a different font stack */
   --font-sans: system-ui, sans-serif;
 }
 ```
 
-The library automatically supports dark mode via `prefers-color-scheme` media query.
+the library automatically supports dark mode via `prefers-color-scheme` media query.
 
+## requirements
+
+- react 18+ or 19+
+- a bundler that supports ES modules (vite, webpack, esbuild, etc.)

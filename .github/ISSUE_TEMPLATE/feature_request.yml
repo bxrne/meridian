@@ -1,0 +1,77 @@
+name: feature request
+description: suggest a new component or enhancement
+title: "[feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        thanks for suggesting a new feature. please describe your idea below.
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: feature type
+      description: what kind of feature is this?
+      options:
+        - new component
+        - component enhancement
+        - styling/theming
+        - documentation
+        - tooling/dx
+        - other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: describe the feature
+      description: a clear description of what you want to add or change.
+      placeholder: i'd like a Tooltip component that shows on hover...
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: motivation
+      description: why would this feature be useful? what problem does it solve?
+      placeholder: tooltips are commonly needed for icon buttons and truncated text...
+    validations:
+      required: true
+
+  - type: textarea
+    id: api
+    attributes:
+      label: proposed api
+      description: if applicable, show how the feature might be used.
+      placeholder: |
+        ```tsx
+        <Tooltip content="edit item">
+          <Button intent="ghost">
+            <EditIcon />
+          </Button>
+        </Tooltip>
+        ```
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: alternatives considered
+      description: have you considered any alternatives or workarounds?
+      placeholder: i tried using title attribute but it doesn't match the design system...
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: contribution
+      description: would you be willing to help implement this feature?
+      options:
+        - label: i would be willing to submit a PR for this feature
+          required: false
+

@@ -1,0 +1,9 @@
+blank_issues_enabled: false
+contact_links:
+  - name: discussions
+    url: https://github.com/bxrne/meridian/discussions
+    about: ask questions and share ideas
+  - name: documentation
+    url: https://bxrne.github.io/meridian
+    about: read the docs before opening an issue
+

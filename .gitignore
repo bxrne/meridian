@@ -1,3 +1,7 @@
-
 node_modules
 dist
+
+# docs generated
+docs/.astro
+docs/dist
+docs/props

@@ -1,0 +1,85 @@
+name: bug report
+description: report a bug or unexpected behavior
+title: "[bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        thanks for taking the time to report a bug. please fill out the information below.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: describe the bug
+      description: a clear and concise description of what the bug is.
+      placeholder: when i click the button, nothing happens...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: steps to reproduce
+      description: steps to reproduce the behavior.
+      placeholder: |
+        1. import Button from 'meridian'
+        2. render <Button onClick={...}>click me</Button>
+        3. click the button
+        4. see error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: expected behavior
+      description: what did you expect to happen?
+      placeholder: the onClick handler should be called.
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: meridian version
+      description: what version of meridian are you using?
+      placeholder: "0.1.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: react-version
+    attributes:
+      label: react version
+      description: what version of react are you using?
+      options:
+        - react 19.x
+        - react 18.x
+        - other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: browser
+      description: what browser are you using?
+      options:
+        - chrome
+        - firefox
+        - safari
+        - edge
+        - other
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: additional context
+      description: add any other context, screenshots, or code snippets.
+      placeholder: here's a minimal reproduction...
+    validations:
+      required: false
+

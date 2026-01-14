@@ -1,12 +1,12 @@
-import starlight from '@astrojs/starlight';
-import react from '@astrojs/react';
-import { defineConfig } from 'astro/config';
+import react from '@astrojs/react'
+import starlight from '@astrojs/starlight'
+import { defineConfig } from 'astro/config'
 
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'Meridian',
-			description: 'Contemporary industrial style component library',
+			title: 'meridian',
+			description: 'contemporary industrial style component library',
 			social: {
 				github: 'https://github.com/bxrne/meridian',
 			},
@@ -27,5 +27,4 @@ export default defineConfig({
 		}),
 		react(),
 	],
-});
-
+})

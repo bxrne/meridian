@@ -1,16 +1,16 @@
 /*
- * Meridian Docs - Industrial Theme Override for Starlight
+ * meridian docs - industrial theme override for starlight
  */
 
-@import 'meridian/styles.css';
+@import "meridian/styles.css";
 
 :root {
-	/* Typography - match Meridian's monospace aesthetic */
+	/* Typography - match meridian's monospace aesthetic */
 	--sl-font:
-		ui-monospace, 'SF Mono', 'Cascadia Code', 'Segoe UI Mono', 'Roboto Mono',
+		ui-monospace, "SF Mono", "Cascadia Code", "Segoe UI Mono", "Roboto Mono",
 		Menlo, Monaco, Consolas, monospace;
 	--sl-font-mono:
-		ui-monospace, 'SF Mono', 'Cascadia Code', 'Segoe UI Mono', 'Roboto Mono',
+		ui-monospace, "SF Mono", "Cascadia Code", "Segoe UI Mono", "Roboto Mono",
 		Menlo, Monaco, Consolas, monospace;
 
 	/* Colors - Light Mode (Industrial paper/ink) */
@@ -22,9 +22,10 @@
 	--sl-color-text: hsl(0, 0%, 8%);
 	--sl-color-text-accent: hsl(0, 0%, 8%);
 
-	--sl-color-accent: hsl(48, 96%, 50%);
-	--sl-color-accent-low: hsl(48, 60%, 90%);
-	--sl-color-accent-high: hsl(48, 96%, 40%);
+	/* Dark orange accent */
+	--sl-color-accent: hsl(25, 95%, 50%);
+	--sl-color-accent-low: hsl(25, 60%, 92%);
+	--sl-color-accent-high: hsl(25, 95%, 42%);
 
 	--sl-color-hairline: hsl(0, 0%, 72%);
 	--sl-color-hairline-light: hsl(0, 0%, 84%);
@@ -34,7 +35,7 @@
 }
 
 /* Dark mode */
-:root[data-theme='dark'] {
+:root[data-theme="dark"] {
 	--sl-color-bg: hsl(0, 0%, 6%);
 	--sl-color-bg-nav: hsl(0, 0%, 8%);
 	--sl-color-bg-sidebar: hsl(0, 0%, 8%);
@@ -43,12 +44,37 @@
 	--sl-color-text: hsl(40, 6%, 92%);
 	--sl-color-text-accent: hsl(40, 6%, 92%);
 
-	--sl-color-accent: hsl(48, 92%, 55%);
-	--sl-color-accent-low: hsl(48, 40%, 14%);
-	--sl-color-accent-high: hsl(48, 92%, 65%);
+	/* Dark orange accent */
+	--sl-color-accent: hsl(25, 95%, 55%);
+	--sl-color-accent-low: hsl(25, 50%, 14%);
+	--sl-color-accent-high: hsl(25, 95%, 65%);
 
 	--sl-color-hairline: hsl(0, 0%, 28%);
 	--sl-color-hairline-light: hsl(0, 0%, 18%);
+}
+
+/* Site title styling - dark orange lowercase */
+.site-title,
+[data-sl-site-title],
+.site-title span {
+	text-transform: lowercase;
+	color: hsl(25, 95%, 50%);
+}
+
+:root[data-theme="dark"] .site-title,
+:root[data-theme="dark"] [data-sl-site-title],
+:root[data-theme="dark"] .site-title span {
+	color: hsl(25, 95%, 55%);
+}
+
+/* Reset Starlight styles for meridian components */
+[data-slot] {
+	border-radius: 0;
+}
+
+/* Fix astro-island wrappers in previews to display inline */
+.component-preview__demo astro-island {
+	display: contents;
 }
 
 /* Component Preview Container */
@@ -127,7 +153,7 @@
 	color: hsl(210, 40%, 45%);
 }
 
-:root[data-theme='dark'] .prop-table__type {
+:root[data-theme="dark"] .prop-table__type {
 	color: hsl(210, 36%, 65%);
 }
 
@@ -139,4 +165,3 @@
 .prop-table__description {
 	color: var(--sl-color-text);
 }
-
