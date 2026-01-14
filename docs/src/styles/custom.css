@@ -1,8 +1,13 @@
 /*
  * meridian docs - industrial theme override for starlight
+ * philosophy: no border-radius, no shadows, sharp industrial aesthetic
  */
 
 @import "meridian/styles.css";
+
+/* ============================================
+   GLOBAL RESETS - INDUSTRIAL PHILOSOPHY
+   ============================================ */
 
 :root {
 	/* Typography - match meridian's monospace aesthetic */
@@ -30,7 +35,7 @@
 	--sl-color-hairline: hsl(0, 0%, 72%);
 	--sl-color-hairline-light: hsl(0, 0%, 84%);
 
-	/* Sharp corners for industrial feel */
+	/* CRITICAL: Sharp corners everywhere */
 	--sl-border-radius: 0;
 }
 
@@ -53,23 +58,344 @@
 	--sl-color-hairline-light: hsl(0, 0%, 18%);
 }
 
-/* Site title styling - dark orange lowercase */
+/* ============================================
+   NUCLEAR RESET - NO BORDER RADIUS ANYWHERE
+   ============================================ */
+
+* {
+	border-radius: 0 !important;
+}
+
+/* Remove all shadows */
+*,
+*::before,
+*::after {
+	box-shadow: none !important;
+}
+
+/* ============================================
+   SITE TITLE - DARK ORANGE
+   ============================================ */
+
 .site-title,
 [data-sl-site-title],
-.site-title span {
+.site-title span,
+header a[href="/"] {
 	text-transform: lowercase;
-	color: hsl(25, 95%, 50%);
+	color: hsl(25, 95%, 50%) !important;
 }
 
 :root[data-theme="dark"] .site-title,
 :root[data-theme="dark"] [data-sl-site-title],
-:root[data-theme="dark"] .site-title span {
-	color: hsl(25, 95%, 55%);
+:root[data-theme="dark"] .site-title span,
+:root[data-theme="dark"] header a[href="/"] {
+	color: hsl(25, 95%, 55%) !important;
 }
 
-/* Reset Starlight styles for meridian components */
+/* ============================================
+   SEARCH / COMMAND PALETTE
+   ============================================ */
+
+/* Search button */
+button[data-open-modal],
+.search-button,
+[aria-label="Search"] {
+	border-radius: 0 !important;
+	border: 1px solid var(--sl-color-hairline) !important;
+}
+
+/* Search modal/dialog */
+dialog,
+[role="dialog"],
+.pagefind-ui,
+.pagefind-ui__search-input,
+.pagefind-ui__result,
+.pagefind-ui__result-link,
+[data-pagefind-ui] * {
+	border-radius: 0 !important;
+	box-shadow: none !important;
+}
+
+/* Search input */
+input[type="search"],
+input[type="text"],
+.search-input,
+[data-pagefind-ui] input {
+	border-radius: 0 !important;
+	border: 1px solid var(--sl-color-hairline) !important;
+}
+
+/* ============================================
+   NAVIGATION - PREV/NEXT LINKS
+   ============================================ */
+
+.pagination-links a,
+a[rel="prev"],
+a[rel="next"],
+.sl-link-card,
+[class*="pagination"],
+[class*="nav-link"] {
+	border-radius: 0 !important;
+	border: 1px solid var(--sl-color-hairline) !important;
+}
+
+/* ============================================
+   SIDEBAR / TABLE OF CONTENTS
+   ============================================ */
+
+.sidebar,
+.sidebar-content,
+.right-sidebar,
+nav[aria-label="Table of Contents"],
+.toc,
+[class*="sidebar"] {
+	border-radius: 0 !important;
+}
+
+.sidebar a,
+.toc a,
+nav a {
+	border-radius: 0 !important;
+}
+
+/* Active/hover states */
+.sidebar a:hover,
+.sidebar a[aria-current],
+.toc a:hover {
+	border-radius: 0 !important;
+}
+
+/* ============================================
+   CARDS / CALLOUTS / ASIDES
+   ============================================ */
+
+.card,
+.sl-card,
+aside,
+.aside,
+.callout,
+.note,
+.warning,
+.tip,
+.caution,
+.danger,
+[class*="card"],
+[class*="callout"],
+[class*="aside"],
+.starlight-aside {
+	border-radius: 0 !important;
+	box-shadow: none !important;
+	border: 1px solid var(--sl-color-hairline) !important;
+}
+
+/* ============================================
+   CODE BLOCKS
+   ============================================ */
+
+pre,
+code,
+.code-block,
+.expressive-code,
+[data-language],
+.frame,
+.copy-button,
+pre > code {
+	border-radius: 0 !important;
+}
+
+/* Code block header/tabs */
+.header,
+.tabs,
+.tab,
+figcaption {
+	border-radius: 0 !important;
+}
+
+/* Inline code */
+:not(pre) > code {
+	border-radius: 0 !important;
+	padding: 0.125rem 0.25rem;
+	background: var(--sl-color-bg-inline-code);
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+button,
+.button,
+[role="button"],
+a.button,
+.action,
+[class*="button"],
+[class*="btn"] {
+	border-radius: 0 !important;
+	box-shadow: none !important;
+}
+
+/* ============================================
+   FORMS / INPUTS
+   ============================================ */
+
+input,
+textarea,
+select,
+[type="text"],
+[type="email"],
+[type="password"],
+[type="search"],
+[type="number"],
+[type="tel"],
+[type="url"] {
+	border-radius: 0 !important;
+	border: 1px solid var(--sl-color-hairline) !important;
+	background: var(--sl-color-bg) !important;
+	font-family: var(--sl-font-mono) !important;
+	padding: 0.5rem 0.75rem !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+	border-color: var(--sl-color-text) !important;
+	outline: none !important;
+}
+
+/* Checkbox and radio */
+input[type="checkbox"],
+input[type="radio"] {
+	border-radius: 0 !important;
+	border: 1px solid var(--sl-color-hairline) !important;
+}
+
+/* Select dropdown */
+select {
+	border-radius: 0 !important;
+	appearance: none !important;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E") !important;
+	background-repeat: no-repeat !important;
+	background-position: right 0.75rem center !important;
+	padding-right: 2rem !important;
+}
+
+/* ============================================
+   TABLES
+   ============================================ */
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.875rem;
+	margin: 1rem 0;
+}
+
+table,
+th,
+td {
+	border-radius: 0 !important;
+}
+
+th {
+	text-align: left;
+	padding: 0.5rem 0.75rem;
+	font-size: 0.6875rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--sl-color-text);
+	background: var(--sl-color-bg-nav);
+	border: 1px solid var(--sl-color-hairline);
+}
+
+td {
+	padding: 0.5rem 0.75rem;
+	border: 1px solid var(--sl-color-hairline-light);
+	vertical-align: top;
+}
+
+tr:hover {
+	background: var(--sl-color-bg-nav);
+}
+
+/* ============================================
+   BADGES / TAGS
+   ============================================ */
+
+.badge,
+.tag,
+[class*="badge"],
+[class*="tag"],
+span[class*="label"] {
+	border-radius: 0 !important;
+	border: 1px solid var(--sl-color-hairline) !important;
+	padding: 0.125rem 0.375rem !important;
+	font-size: 0.6875rem !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.05em !important;
+}
+
+/* ============================================
+   TOOLTIPS / POPOVERS
+   ============================================ */
+
+[role="tooltip"],
+.tooltip,
+.popover,
+[data-tooltip] {
+	border-radius: 0 !important;
+	box-shadow: none !important;
+	border: 1px solid var(--sl-color-hairline) !important;
+}
+
+/* ============================================
+   MOBILE MENU
+   ============================================ */
+
+.mobile-menu,
+.mobile-menu-toggle,
+[class*="mobile"],
+.menu-button {
+	border-radius: 0 !important;
+}
+
+/* ============================================
+   THEME TOGGLE
+   ============================================ */
+
+.theme-toggle,
+[aria-label*="theme"],
+[aria-label*="Theme"] {
+	border-radius: 0 !important;
+}
+
+/* ============================================
+   SCROLL BARS (optional - industrial look)
+   ============================================ */
+
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--sl-color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--sl-color-hairline);
+	border: none;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--sl-color-text);
+}
+
+/* ============================================
+   MERIDIAN COMPONENTS RESET
+   ============================================ */
+
 [data-slot] {
-	border-radius: 0;
+	border-radius: 0 !important;
 }
 
 /* Fix astro-island wrappers in previews to display inline */
@@ -77,7 +403,10 @@
 	display: contents;
 }
 
-/* Component Preview Container */
+/* ============================================
+   COMPONENT PREVIEW CONTAINER
+   ============================================ */
+
 .component-preview {
 	display: flex;
 	flex-direction: column;
@@ -105,7 +434,10 @@
 	border-bottom: 1px solid var(--sl-color-hairline);
 }
 
-/* Prop Table Styling */
+/* ============================================
+   PROP TABLE STYLING
+   ============================================ */
+
 .prop-table {
 	width: 100%;
 	border-collapse: collapse;
