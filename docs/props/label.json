@@ -1,0 +1,13 @@
+{
+	"name": "Label",
+	"description": "",
+	"props": [
+		{
+			"name": "required",
+			"type": "boolean",
+			"required": false,
+			"defaultValue": null,
+			"description": "Whether the associated field is required"
+		}
+	]
+}

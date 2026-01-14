@@ -17,6 +17,9 @@
 	"scripts": {
 		"build": "bunup",
 		"dev": "bun run --cwd test/ui dev",
+		"docs:dev": "bun run --cwd docs dev",
+		"docs:build": "bun run --cwd docs build",
+		"docs:preview": "bun run --cwd docs preview",
 		"postinstall": "bun simple-git-hooks",
 		"lint": "biome check .",
 		"lint:fix": "biome check --write .",
@@ -48,7 +51,8 @@
 		}
 	},
 	"workspaces": [
-		"test/**"
+		"test/**",
+		"docs"
 	],
 	"type": "module",
 	"exports": {

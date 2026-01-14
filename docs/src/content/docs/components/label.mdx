@@ -1,0 +1,89 @@
+---
+title: Label
+description: Form label for input fields
+---
+
+import { Label, Input, Checkbox, Switch } from 'meridian';
+import PropTable from '../../../components/PropTable.astro';
+import ComponentPreview from '../../../components/ComponentPreview.astro';
+
+The Label component provides accessible labels for form inputs with optional required indicator.
+
+<ComponentPreview vertical>
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', width: '100%', maxWidth: '300px' }}>
+    <Label htmlFor="label-demo" client:load>Field label</Label>
+    <Input id="label-demo" placeholder="Enter value" client:load />
+  </div>
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', width: '100%', maxWidth: '300px' }}>
+    <Label htmlFor="label-required" required client:load>Required field</Label>
+    <Input id="label-required" placeholder="Enter value" client:load />
+  </div>
+</ComponentPreview>
+
+## Import
+
+```tsx
+import { Label } from 'meridian';
+```
+
+## Props
+
+<PropTable component="label" />
+
+## Usage
+
+### Basic
+
+```tsx
+<Label htmlFor="my-input">Field name</Label>
+<Input id="my-input" />
+```
+
+### Required Fields
+
+Use the `required` prop to show a required indicator:
+
+```tsx
+<Label htmlFor="required-field" required>Email address</Label>
+<Input id="required-field" type="email" />
+```
+
+<ComponentPreview label="Required Indicator" vertical>
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', width: '100%', maxWidth: '300px' }}>
+    <Label htmlFor="req-demo" required client:load>Email address</Label>
+    <Input id="req-demo" type="email" placeholder="user@example.com" client:load />
+  </div>
+</ComponentPreview>
+
+### With Checkbox
+
+```tsx
+<div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+  <Checkbox id="terms" />
+  <Label htmlFor="terms">Accept terms and conditions</Label>
+</div>
+```
+
+<ComponentPreview label="With Checkbox">
+  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+    <Checkbox id="checkbox-demo" client:load />
+    <Label htmlFor="checkbox-demo" client:load>Accept terms and conditions</Label>
+  </div>
+</ComponentPreview>
+
+### With Switch
+
+```tsx
+<div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+  <Switch id="notifications" />
+  <Label htmlFor="notifications">Enable notifications</Label>
+</div>
+```
+
+<ComponentPreview label="With Switch">
+  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+    <Switch id="switch-demo" client:load />
+    <Label htmlFor="switch-demo" client:load>Enable notifications</Label>
+  </div>
+</ComponentPreview>
+

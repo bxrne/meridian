@@ -1,0 +1,90 @@
+---
+title: Input
+description: Text input field for user data entry
+---
+
+import { Input, Label } from 'meridian';
+import PropTable from '../../../components/PropTable.astro';
+import ComponentPreview from '../../../components/ComponentPreview.astro';
+
+The Input component provides a styled text field for user data entry.
+
+<ComponentPreview vertical>
+  <div style={{ width: '100%', maxWidth: '300px' }}>
+    <Label htmlFor="demo-input" client:load>Serial Number</Label>
+    <Input id="demo-input" placeholder="Enter value" client:load />
+  </div>
+</ComponentPreview>
+
+## Import
+
+```tsx
+import { Input } from 'meridian';
+```
+
+## Props
+
+<PropTable component="input" />
+
+## Usage
+
+### Basic
+
+```tsx
+<Input placeholder="Enter text" />
+```
+
+### With Label
+
+Always pair inputs with labels for accessibility:
+
+```tsx
+<Label htmlFor="email">Email address</Label>
+<Input id="email" type="email" placeholder="user@example.com" />
+```
+
+<ComponentPreview label="With Label" vertical>
+  <div style={{ width: '100%', maxWidth: '300px' }}>
+    <Label htmlFor="labeled-input" client:load>Email address</Label>
+    <Input id="labeled-input" type="email" placeholder="user@example.com" client:load />
+  </div>
+</ComponentPreview>
+
+### Invalid State
+
+Use the `invalid` prop to indicate validation errors:
+
+```tsx
+<Label htmlFor="invalid-input" required>Required field</Label>
+<Input id="invalid-input" invalid placeholder="This field is required" />
+```
+
+<ComponentPreview label="Invalid State" vertical>
+  <div style={{ width: '100%', maxWidth: '300px' }}>
+    <Label htmlFor="invalid-demo" required client:load>Required field</Label>
+    <Input id="invalid-demo" invalid placeholder="This field is required" client:load />
+  </div>
+</ComponentPreview>
+
+### Disabled State
+
+```tsx
+<Input disabled placeholder="Cannot edit" />
+```
+
+<ComponentPreview label="Disabled">
+  <Input disabled placeholder="Cannot edit" style={{ maxWidth: '300px' }} client:load />
+</ComponentPreview>
+
+### Input Types
+
+The Input component accepts all standard HTML input types:
+
+```tsx
+<Input type="text" placeholder="Text input" />
+<Input type="email" placeholder="email@example.com" />
+<Input type="password" placeholder="Password" />
+<Input type="number" placeholder="0" />
+<Input type="search" placeholder="Search..." />
+```
+

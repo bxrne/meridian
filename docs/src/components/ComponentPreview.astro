@@ -1,0 +1,57 @@
+---
+/**
+ * ComponentPreview Component
+ * 
+ * Displays a live component preview with a labeled container.
+ * Usage: <ComponentPreview><Button>Click me</Button></ComponentPreview>
+ */
+
+interface Props {
+	label?: string;
+	vertical?: boolean;
+}
+
+const { label = 'Preview', vertical = false } = Astro.props;
+---
+
+<div class="component-preview">
+	<div class="component-preview__label">{label}</div>
+	<div class:list={['component-preview__demo', { 'component-preview__demo--vertical': vertical }]}>
+		<slot />
+	</div>
+</div>
+
+<style>
+	.component-preview {
+		display: flex;
+		flex-direction: column;
+		border: 1px solid var(--sl-color-hairline);
+		margin: 1.5rem 0;
+	}
+
+	.component-preview__label {
+		padding: 0.25rem 0.5rem;
+		font-size: 0.6875rem;
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: var(--sl-color-text);
+		background: var(--sl-color-bg-nav);
+		border-bottom: 1px solid var(--sl-color-hairline);
+	}
+
+	.component-preview__demo {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 1.5rem;
+		background: var(--sl-color-bg);
+	}
+
+	.component-preview__demo--vertical {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+</style>
+

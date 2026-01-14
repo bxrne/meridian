@@ -1,0 +1,105 @@
+---
+title: Text
+description: Body text with size and color variants
+---
+
+import { Text, Separator } from 'meridian';
+import PropTable from '../../../components/PropTable.astro';
+import ComponentPreview from '../../../components/ComponentPreview.astro';
+
+The Text component renders body text with configurable size and color variants.
+
+<ComponentPreview vertical>
+  <Text size="lg" client:load>Large text</Text>
+  <Text client:load>Base text (default)</Text>
+  <Text size="sm" client:load>Small text</Text>
+  <Text size="xs" client:load>Extra small text</Text>
+  <Separator client:load />
+  <Text muted client:load>Muted text</Text>
+</ComponentPreview>
+
+## Import
+
+```tsx
+import { Text } from 'meridian';
+```
+
+## Props
+
+<PropTable component="text" />
+
+## Usage
+
+### Basic
+
+```tsx
+<Text>This is body text.</Text>
+```
+
+### Sizes
+
+Use the `size` prop to adjust text size:
+
+```tsx
+<Text size="lg">Large text for emphasis</Text>
+<Text size="base">Base text (default)</Text>
+<Text size="sm">Small text for secondary content</Text>
+<Text size="xs">Extra small for captions</Text>
+```
+
+<ComponentPreview label="Sizes" vertical>
+  <Text size="lg" client:load>Large text (16px)</Text>
+  <Text size="base" client:load>Base text (14px)</Text>
+  <Text size="sm" client:load>Small text (12px)</Text>
+  <Text size="xs" client:load>Extra small (11px)</Text>
+</ComponentPreview>
+
+### Muted Text
+
+Use the `muted` prop for secondary or de-emphasized content:
+
+```tsx
+<Text>Primary content</Text>
+<Text muted>Secondary description or helper text</Text>
+```
+
+<ComponentPreview label="Muted" vertical>
+  <Text client:load>Primary content</Text>
+  <Text muted client:load>Secondary description or helper text</Text>
+</ComponentPreview>
+
+### Inline Text
+
+Use the `inline` prop to render as a `<span>` instead of `<p>`:
+
+```tsx
+<p>
+  This is regular text with <Text inline muted>inline muted text</Text> in the middle.
+</p>
+```
+
+### Combining Props
+
+```tsx
+<Text size="sm" muted>
+  Last updated: January 14, 2026
+</Text>
+```
+
+<ComponentPreview label="Combined">
+  <Text size="sm" muted client:load>Last updated: January 14, 2026</Text>
+</ComponentPreview>
+
+### Use Cases
+
+```tsx
+// Card description
+<Text size="sm">All systems nominal. No anomalies detected.</Text>
+
+// Timestamp
+<Text size="xs" muted>2 hours ago</Text>
+
+// Helper text
+<Text size="sm" muted>Enter your email to receive updates.</Text>
+```
+

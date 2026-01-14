@@ -1,0 +1,37 @@
+---
+title: Meridian
+description: Contemporary industrial style component library
+template: splash
+hero:
+  tagline: A React component library with an industrial manufacturing aesthetic. Sharp edges, monospace typography, and safety-signal colors.
+  actions:
+    - text: Get Started
+      link: /getting-started/
+      icon: right-arrow
+    - text: View on GitHub
+      link: https://github.com/bxrne/meridian
+      icon: external
+      variant: minimal
+---
+
+import { Badge, Button, Card, CardHeader, CardTitle, CardDescription, CardContent } from 'meridian';
+
+<div class="component-preview">
+  <div class="component-preview__label">Preview</div>
+  <div class="component-preview__demo">
+    <Button intent="primary" client:load>Primary</Button>
+    <Button intent="secondary" client:load>Secondary</Button>
+    <Button intent="danger" client:load>Danger</Button>
+    <Button intent="ghost" client:load>Ghost</Button>
+  </div>
+</div>
+
+## Features
+
+- **Industrial Aesthetic** — Design language inspired by manufacturing contexts: safety markings, machine surfaces, and technical documentation
+- **Monospace Typography** — Clean, technical typography that fits the industrial theme
+- **Dark Mode** — Automatic dark mode support with carefully tuned colors
+- **Zero Runtime** — Pure CSS styling with data attributes, no JavaScript overhead
+- **TypeScript First** — Full type definitions with JSDoc documentation
+- **Accessible** — Built with accessibility in mind, proper focus states and ARIA support
+

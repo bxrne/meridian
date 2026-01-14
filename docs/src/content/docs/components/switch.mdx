@@ -1,0 +1,116 @@
+---
+title: Switch
+description: Toggle control for binary settings
+---
+
+import { Switch, Label } from 'meridian';
+import PropTable from '../../../components/PropTable.astro';
+import ComponentPreview from '../../../components/ComponentPreview.astro';
+
+The Switch component provides a toggle control for binary on/off settings.
+
+<ComponentPreview>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+    <Switch id="switch-on" defaultChecked client:load />
+    <Label htmlFor="switch-on" client:load>On</Label>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+    <Switch id="switch-off" client:load />
+    <Label htmlFor="switch-off" client:load>Off</Label>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+    <Switch id="switch-disabled" disabled client:load />
+    <Label htmlFor="switch-disabled" client:load>Disabled</Label>
+  </div>
+</ComponentPreview>
+
+## Import
+
+```tsx
+import { Switch } from 'meridian';
+```
+
+## Props
+
+<PropTable component="switch" />
+
+## Usage
+
+### Basic
+
+```tsx
+<Switch />
+```
+
+### With Label
+
+Always pair switches with labels for accessibility:
+
+```tsx
+<div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+  <Switch id="notifications" />
+  <Label htmlFor="notifications">Enable notifications</Label>
+</div>
+```
+
+### Controlled
+
+```tsx
+const [enabled, setEnabled] = useState(false);
+
+<Switch 
+  checked={enabled} 
+  onChange={(e) => setEnabled(e.target.checked)} 
+/>
+```
+
+### Default Checked
+
+```tsx
+<Switch defaultChecked />
+```
+
+<ComponentPreview label="Default On">
+  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+    <Switch id="default-on-demo" defaultChecked client:load />
+    <Label htmlFor="default-on-demo" client:load>Feature enabled by default</Label>
+  </div>
+</ComponentPreview>
+
+### Disabled
+
+```tsx
+<Switch disabled />
+<Switch disabled defaultChecked />
+```
+
+<ComponentPreview label="Disabled States">
+  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+    <Switch id="disabled-off" disabled client:load />
+    <Label htmlFor="disabled-off" client:load>Disabled off</Label>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+    <Switch id="disabled-on" disabled defaultChecked client:load />
+    <Label htmlFor="disabled-on" client:load>Disabled on</Label>
+  </div>
+</ComponentPreview>
+
+### Settings Example
+
+```tsx
+<div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+    <Switch id="dark-mode" />
+    <Label htmlFor="dark-mode">Dark mode</Label>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+    <Switch id="auto-save" defaultChecked />
+    <Label htmlFor="auto-save">Auto-save</Label>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+    <Switch id="analytics" />
+    <Label htmlFor="analytics">Usage analytics</Label>
+  </div>
+</div>
+```
+

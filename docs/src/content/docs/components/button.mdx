@@ -1,0 +1,74 @@
+---
+title: Button
+description: Interactive button with multiple visual intents
+---
+
+import { Button } from 'meridian';
+import PropTable from '../../../components/PropTable.astro';
+import ComponentPreview from '../../../components/ComponentPreview.astro';
+
+The Button component provides a clickable element with different visual intents for various actions.
+
+<ComponentPreview>
+  <Button intent="primary" client:load>Primary</Button>
+  <Button intent="secondary" client:load>Secondary</Button>
+  <Button intent="danger" client:load>Danger</Button>
+  <Button intent="ghost" client:load>Ghost</Button>
+  <Button disabled client:load>Disabled</Button>
+</ComponentPreview>
+
+## Import
+
+```tsx
+import { Button } from 'meridian';
+```
+
+## Props
+
+<PropTable component="button" />
+
+## Usage
+
+### Basic
+
+```tsx
+<Button>Click me</Button>
+```
+
+### Intents
+
+Use the `intent` prop to change the visual style based on the action type:
+
+```tsx
+// Primary action (default)
+<Button intent="primary">Save changes</Button>
+
+// Secondary action
+<Button intent="secondary">Cancel</Button>
+
+// Destructive action
+<Button intent="danger">Delete</Button>
+
+// Subtle action
+<Button intent="ghost">Learn more</Button>
+```
+
+<ComponentPreview label="Intents">
+  <Button intent="primary" client:load>Primary</Button>
+  <Button intent="secondary" client:load>Secondary</Button>
+  <Button intent="danger" client:load>Danger</Button>
+  <Button intent="ghost" client:load>Ghost</Button>
+</ComponentPreview>
+
+### Disabled State
+
+```tsx
+<Button disabled>Cannot click</Button>
+```
+
+<ComponentPreview label="Disabled">
+  <Button intent="primary" disabled client:load>Primary</Button>
+  <Button intent="secondary" disabled client:load>Secondary</Button>
+  <Button intent="danger" disabled client:load>Danger</Button>
+</ComponentPreview>
+

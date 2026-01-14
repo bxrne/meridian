@@ -1,0 +1,13 @@
+{
+	"name": "Button",
+	"description": "",
+	"props": [
+		{
+			"name": "intent",
+			"type": "\"primary\" | \"secondary\" | \"danger\" | \"ghost\"",
+			"required": false,
+			"defaultValue": "primary",
+			"description": "Visual style intent of the button"
+		}
+	]
+}

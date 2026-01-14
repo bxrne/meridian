@@ -1,0 +1,83 @@
+---
+title: Badge
+description: Status indicator with variant colors
+---
+
+import { Badge } from 'meridian';
+import PropTable from '../../../components/PropTable.astro';
+import ComponentPreview from '../../../components/ComponentPreview.astro';
+
+The Badge component displays a small label for status indicators, categories, or counts.
+
+<ComponentPreview>
+  <Badge client:load>Default</Badge>
+  <Badge variant="success" client:load>Success</Badge>
+  <Badge variant="warning" client:load>Warning</Badge>
+  <Badge variant="danger" client:load>Danger</Badge>
+  <Badge variant="info" client:load>Info</Badge>
+</ComponentPreview>
+
+## Import
+
+```tsx
+import { Badge } from 'meridian';
+```
+
+## Props
+
+<PropTable component="badge" />
+
+## Usage
+
+### Basic
+
+```tsx
+<Badge>Label</Badge>
+```
+
+### Variants
+
+Use the `variant` prop to indicate different statuses:
+
+```tsx
+// Default neutral badge
+<Badge>Default</Badge>
+
+// Operational/success state
+<Badge variant="success">Operational</Badge>
+
+// Warning/caution state
+<Badge variant="warning">Caution</Badge>
+
+// Error/danger state
+<Badge variant="danger">Critical</Badge>
+
+// Informational
+<Badge variant="info">Info</Badge>
+```
+
+<ComponentPreview label="Status Variants">
+  <Badge client:load>Default</Badge>
+  <Badge variant="success" client:load>Operational</Badge>
+  <Badge variant="warning" client:load>Caution</Badge>
+  <Badge variant="danger" client:load>Critical</Badge>
+  <Badge variant="info" client:load>Info</Badge>
+</ComponentPreview>
+
+### Real-World Examples
+
+```tsx
+// System status
+<Badge variant="success">Online</Badge>
+<Badge variant="danger">Offline</Badge>
+
+// Priority labels
+<Badge variant="danger">High Priority</Badge>
+<Badge variant="warning">Medium</Badge>
+<Badge>Low</Badge>
+
+// Categories
+<Badge variant="info">Documentation</Badge>
+<Badge variant="info">Tutorial</Badge>
+```
+

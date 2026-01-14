@@ -1,0 +1,27 @@
+{
+	"name": "Text",
+	"description": "",
+	"props": [
+		{
+			"name": "inline",
+			"type": "boolean",
+			"required": false,
+			"defaultValue": null,
+			"description": "Render as span instead of paragraph"
+		},
+		{
+			"name": "muted",
+			"type": "boolean",
+			"required": false,
+			"defaultValue": null,
+			"description": "Whether to use muted color"
+		},
+		{
+			"name": "size",
+			"type": "\"base\" | \"xs\" | \"sm\" | \"lg\"",
+			"required": false,
+			"defaultValue": "base",
+			"description": "Font size variant"
+		}
+	]
+}

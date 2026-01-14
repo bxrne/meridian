@@ -1,0 +1,83 @@
+---
+title: Getting Started
+description: Install and configure Meridian in your React project
+---
+
+## Installation
+
+Install Meridian using your preferred package manager:
+
+```bash
+# npm
+npm install meridian
+
+# pnpm
+pnpm add meridian
+
+# bun
+bun add meridian
+
+# yarn
+yarn add meridian
+```
+
+## Setup
+
+Import the CSS styles in your application's entry point:
+
+```tsx
+// main.tsx or App.tsx
+import 'meridian/styles.css';
+```
+
+## Usage
+
+Import and use components directly:
+
+```tsx
+import { Button, Badge, Card, CardHeader, CardTitle, CardContent } from 'meridian';
+
+function App() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>System Status</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <Badge variant="success">Operational</Badge>
+        <Button intent="primary">View Details</Button>
+      </CardContent>
+    </Card>
+  );
+}
+```
+
+## TypeScript
+
+Meridian is written in TypeScript and exports all prop types:
+
+```tsx
+import type { ButtonProps, ButtonIntent, BadgeVariant } from 'meridian';
+
+// Use types for custom wrappers
+const MyButton = (props: ButtonProps) => {
+  return <Button {...props} />;
+};
+```
+
+## Styling
+
+Meridian uses CSS custom properties (variables) for theming. You can override these in your own CSS:
+
+```css
+:root {
+  /* Override the accent color */
+  --color-accent: hsl(200, 90%, 50%);
+  
+  /* Use a different font stack */
+  --font-sans: system-ui, sans-serif;
+}
+```
+
+The library automatically supports dark mode via `prefers-color-scheme` media query.
+

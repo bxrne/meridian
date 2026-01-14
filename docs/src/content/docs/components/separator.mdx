@@ -1,0 +1,122 @@
+---
+title: Separator
+description: Visual divider for content sections
+---
+
+import { Separator, Heading, Text } from 'meridian';
+import PropTable from '../../../components/PropTable.astro';
+import ComponentPreview from '../../../components/ComponentPreview.astro';
+
+The Separator component provides a visual divider between content sections.
+
+<ComponentPreview vertical>
+  <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <Text client:load>Content above</Text>
+    <Separator client:load />
+    <Text client:load>Content below</Text>
+  </div>
+</ComponentPreview>
+
+## Import
+
+```tsx
+import { Separator } from 'meridian';
+```
+
+## Props
+
+<PropTable component="separator" />
+
+## Usage
+
+### Basic (Horizontal)
+
+```tsx
+<Separator />
+```
+
+### Horizontal Separator
+
+The default orientation is horizontal:
+
+```tsx
+<div>
+  <Heading level={3}>Section One</Heading>
+  <Text>Content for section one.</Text>
+</div>
+<Separator />
+<div>
+  <Heading level={3}>Section Two</Heading>
+  <Text>Content for section two.</Text>
+</div>
+```
+
+<ComponentPreview label="Horizontal" vertical>
+  <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <div>
+      <Heading level={4} client:load>Section One</Heading>
+      <Text size="sm" client:load>Content for section one.</Text>
+    </div>
+    <Separator client:load />
+    <div>
+      <Heading level={4} client:load>Section Two</Heading>
+      <Text size="sm" client:load>Content for section two.</Text>
+    </div>
+  </div>
+</ComponentPreview>
+
+### Vertical Separator
+
+Use `orientation="vertical"` for side-by-side content:
+
+```tsx
+<div style={{ display: 'flex', alignItems: 'center', gap: '1rem', height: '40px' }}>
+  <span>Left</span>
+  <Separator orientation="vertical" />
+  <span>Right</span>
+</div>
+```
+
+<ComponentPreview label="Vertical">
+  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', height: '40px' }}>
+    <Text inline client:load>Option A</Text>
+    <Separator orientation="vertical" client:load />
+    <Text inline client:load>Option B</Text>
+    <Separator orientation="vertical" client:load />
+    <Text inline client:load>Option C</Text>
+  </div>
+</ComponentPreview>
+
+### In Navigation
+
+```tsx
+<nav style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+  <a href="/">Home</a>
+  <Separator orientation="vertical" />
+  <a href="/docs">Docs</a>
+  <Separator orientation="vertical" />
+  <a href="/components">Components</a>
+</nav>
+```
+
+### Spacing Sections
+
+Use separators to create visual breaks in long content:
+
+```tsx
+<article>
+  <Heading level={2}>Introduction</Heading>
+  <Text>Opening content...</Text>
+  
+  <Separator />
+  
+  <Heading level={2}>Main Content</Heading>
+  <Text>Main body...</Text>
+  
+  <Separator />
+  
+  <Heading level={2}>Conclusion</Heading>
+  <Text>Closing content...</Text>
+</article>
+```
+

@@ -1,0 +1,93 @@
+---
+title: Heading
+description: Semantic headings with consistent typography
+---
+
+import { Heading, Separator } from 'meridian';
+import PropTable from '../../../components/PropTable.astro';
+import ComponentPreview from '../../../components/ComponentPreview.astro';
+
+The Heading component renders semantic heading elements (h1-h6) with consistent styling.
+
+<ComponentPreview vertical>
+  <Heading level={1} client:load>Heading 1</Heading>
+  <Heading level={2} client:load>Heading 2</Heading>
+  <Heading level={3} client:load>Heading 3</Heading>
+  <Heading level={4} client:load>Heading 4</Heading>
+  <Heading level={5} client:load>Heading 5</Heading>
+  <Heading level={6} client:load>Heading 6</Heading>
+</ComponentPreview>
+
+## Import
+
+```tsx
+import { Heading } from 'meridian';
+```
+
+## Props
+
+<PropTable component="heading" />
+
+## Usage
+
+### Basic
+
+```tsx
+<Heading>Default heading (h2)</Heading>
+```
+
+### Heading Levels
+
+Use the `level` prop to specify the semantic heading level:
+
+```tsx
+<Heading level={1}>Page Title</Heading>
+<Heading level={2}>Section Title</Heading>
+<Heading level={3}>Subsection</Heading>
+<Heading level={4}>Group Title</Heading>
+<Heading level={5}>Small Heading</Heading>
+<Heading level={6}>Label Heading</Heading>
+```
+
+### Typography Scale
+
+Each heading level has a corresponding font size from the design system:
+
+| Level | Font Size | Use Case |
+|-------|-----------|----------|
+| 1 | 32px (2rem) | Page titles |
+| 2 | 24px (1.5rem) | Section titles |
+| 3 | 18px (1.125rem) | Subsections |
+| 4 | 16px (1rem) | Group titles |
+| 5 | 14px (0.875rem) | Small headings |
+| 6 | 12px (0.75rem) | Labels, uppercase |
+
+### Document Structure
+
+Use headings to create a logical document structure:
+
+```tsx
+<Heading level={1}>Dashboard</Heading>
+
+<Heading level={2}>Overview</Heading>
+<p>Summary statistics and key metrics.</p>
+
+<Heading level={2}>Recent Activity</Heading>
+<Heading level={3}>Today</Heading>
+<p>Activities from today.</p>
+
+<Heading level={3}>This Week</Heading>
+<p>Activities from this week.</p>
+```
+
+<ComponentPreview label="Document Structure" vertical>
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', width: '100%' }}>
+    <Heading level={1} client:load>Dashboard</Heading>
+    <Separator client:load />
+    <Heading level={2} client:load>Overview</Heading>
+    <Heading level={2} client:load>Recent Activity</Heading>
+    <Heading level={3} client:load>Today</Heading>
+    <Heading level={3} client:load>This Week</Heading>
+  </div>
+</ComponentPreview>
+

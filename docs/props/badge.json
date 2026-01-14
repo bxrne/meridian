@@ -1,0 +1,13 @@
+{
+	"name": "Badge",
+	"description": "",
+	"props": [
+		{
+			"name": "variant",
+			"type": "\"default\" | \"success\" | \"warning\" | \"danger\" | \"info\"",
+			"required": false,
+			"defaultValue": "default",
+			"description": "Visual variant indicating status or category"
+		}
+	]
+}

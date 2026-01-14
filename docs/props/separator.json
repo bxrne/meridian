@@ -1,0 +1,13 @@
+{
+	"name": "Separator",
+	"description": "",
+	"props": [
+		{
+			"name": "orientation",
+			"type": "\"horizontal\" | \"vertical\"",
+			"required": false,
+			"defaultValue": "horizontal",
+			"description": "Direction of the separator line"
+		}
+	]
+}

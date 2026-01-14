@@ -1,0 +1,142 @@
+/*
+ * Meridian Docs - Industrial Theme Override for Starlight
+ */
+
+@import 'meridian/styles.css';
+
+:root {
+	/* Typography - match Meridian's monospace aesthetic */
+	--sl-font:
+		ui-monospace, 'SF Mono', 'Cascadia Code', 'Segoe UI Mono', 'Roboto Mono',
+		Menlo, Monaco, Consolas, monospace;
+	--sl-font-mono:
+		ui-monospace, 'SF Mono', 'Cascadia Code', 'Segoe UI Mono', 'Roboto Mono',
+		Menlo, Monaco, Consolas, monospace;
+
+	/* Colors - Light Mode (Industrial paper/ink) */
+	--sl-color-bg: hsl(40, 10%, 96%);
+	--sl-color-bg-nav: hsl(40, 8%, 92%);
+	--sl-color-bg-sidebar: hsl(40, 8%, 94%);
+	--sl-color-bg-inline-code: hsl(40, 6%, 90%);
+
+	--sl-color-text: hsl(0, 0%, 8%);
+	--sl-color-text-accent: hsl(0, 0%, 8%);
+
+	--sl-color-accent: hsl(48, 96%, 50%);
+	--sl-color-accent-low: hsl(48, 60%, 90%);
+	--sl-color-accent-high: hsl(48, 96%, 40%);
+
+	--sl-color-hairline: hsl(0, 0%, 72%);
+	--sl-color-hairline-light: hsl(0, 0%, 84%);
+
+	/* Sharp corners for industrial feel */
+	--sl-border-radius: 0;
+}
+
+/* Dark mode */
+:root[data-theme='dark'] {
+	--sl-color-bg: hsl(0, 0%, 6%);
+	--sl-color-bg-nav: hsl(0, 0%, 8%);
+	--sl-color-bg-sidebar: hsl(0, 0%, 8%);
+	--sl-color-bg-inline-code: hsl(0, 0%, 14%);
+
+	--sl-color-text: hsl(40, 6%, 92%);
+	--sl-color-text-accent: hsl(40, 6%, 92%);
+
+	--sl-color-accent: hsl(48, 92%, 55%);
+	--sl-color-accent-low: hsl(48, 40%, 14%);
+	--sl-color-accent-high: hsl(48, 92%, 65%);
+
+	--sl-color-hairline: hsl(0, 0%, 28%);
+	--sl-color-hairline-light: hsl(0, 0%, 18%);
+}
+
+/* Component Preview Container */
+.component-preview {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid var(--sl-color-hairline);
+	margin: 1.5rem 0;
+}
+
+.component-preview__demo {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.75rem;
+	padding: 1.5rem;
+	background: var(--sl-color-bg);
+}
+
+.component-preview__label {
+	padding: 0.25rem 0.5rem;
+	font-size: 0.6875rem;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--sl-color-text);
+	background: var(--sl-color-bg-nav);
+	border-bottom: 1px solid var(--sl-color-hairline);
+}
+
+/* Prop Table Styling */
+.prop-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.875rem;
+	margin: 1rem 0;
+}
+
+.prop-table th {
+	text-align: left;
+	padding: 0.5rem 0.75rem;
+	font-size: 0.6875rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--sl-color-text);
+	background: var(--sl-color-bg-nav);
+	border: 1px solid var(--sl-color-hairline);
+}
+
+.prop-table td {
+	padding: 0.5rem 0.75rem;
+	border: 1px solid var(--sl-color-hairline-light);
+	vertical-align: top;
+}
+
+.prop-table code {
+	font-size: 0.75rem;
+	padding: 0.125rem 0.25rem;
+	background: var(--sl-color-bg-inline-code);
+}
+
+.prop-table__name {
+	font-weight: 500;
+	font-family: var(--sl-font-mono);
+}
+
+.prop-table__required {
+	color: hsl(0, 72%, 44%);
+	font-size: 0.75rem;
+}
+
+.prop-table__type {
+	font-family: var(--sl-font-mono);
+	font-size: 0.75rem;
+	color: hsl(210, 40%, 45%);
+}
+
+:root[data-theme='dark'] .prop-table__type {
+	color: hsl(210, 36%, 65%);
+}
+
+.prop-table__default {
+	font-family: var(--sl-font-mono);
+	font-size: 0.75rem;
+}
+
+.prop-table__description {
+	color: var(--sl-color-text);
+}
+

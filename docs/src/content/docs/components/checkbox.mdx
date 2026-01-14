@@ -1,0 +1,117 @@
+---
+title: Checkbox
+description: Binary selection control
+---
+
+import { Checkbox, Label } from 'meridian';
+import PropTable from '../../../components/PropTable.astro';
+import ComponentPreview from '../../../components/ComponentPreview.astro';
+
+The Checkbox component provides a binary selection control for forms.
+
+<ComponentPreview>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+    <Checkbox id="checkbox-preview" defaultChecked client:load />
+    <Label htmlFor="checkbox-preview" client:load>Checked</Label>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+    <Checkbox id="checkbox-unchecked" client:load />
+    <Label htmlFor="checkbox-unchecked" client:load>Unchecked</Label>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+    <Checkbox id="checkbox-disabled" disabled client:load />
+    <Label htmlFor="checkbox-disabled" client:load>Disabled</Label>
+  </div>
+</ComponentPreview>
+
+## Import
+
+```tsx
+import { Checkbox } from 'meridian';
+```
+
+## Props
+
+<PropTable component="checkbox" />
+
+## Usage
+
+### Basic
+
+```tsx
+<Checkbox />
+```
+
+### With Label
+
+Always pair checkboxes with labels for accessibility:
+
+```tsx
+<div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+  <Checkbox id="terms" />
+  <Label htmlFor="terms">I agree to the terms</Label>
+</div>
+```
+
+### Controlled
+
+```tsx
+const [checked, setChecked] = useState(false);
+
+<Checkbox 
+  checked={checked} 
+  onChange={(e) => setChecked(e.target.checked)} 
+/>
+```
+
+### Default Checked
+
+```tsx
+<Checkbox defaultChecked />
+```
+
+<ComponentPreview label="Default Checked">
+  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+    <Checkbox id="default-checked-demo" defaultChecked client:load />
+    <Label htmlFor="default-checked-demo" client:load>Pre-selected option</Label>
+  </div>
+</ComponentPreview>
+
+### Disabled
+
+```tsx
+<Checkbox disabled />
+<Checkbox disabled defaultChecked />
+```
+
+<ComponentPreview label="Disabled States">
+  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+    <Checkbox id="disabled-unchecked" disabled client:load />
+    <Label htmlFor="disabled-unchecked" client:load>Disabled</Label>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+    <Checkbox id="disabled-checked" disabled defaultChecked client:load />
+    <Label htmlFor="disabled-checked" client:load>Disabled checked</Label>
+  </div>
+</ComponentPreview>
+
+### Checkbox Group
+
+```tsx
+<fieldset>
+  <legend>Select options</legend>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+    <Checkbox id="option-1" name="options" />
+    <Label htmlFor="option-1">Option 1</Label>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+    <Checkbox id="option-2" name="options" />
+    <Label htmlFor="option-2">Option 2</Label>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+    <Checkbox id="option-3" name="options" />
+    <Label htmlFor="option-3">Option 3</Label>
+  </div>
+</fieldset>
+```
+

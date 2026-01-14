@@ -1,0 +1,13 @@
+{
+	"name": "Input",
+	"description": "",
+	"props": [
+		{
+			"name": "invalid",
+			"type": "boolean",
+			"required": false,
+			"defaultValue": null,
+			"description": "Whether the input value is invalid"
+		}
+	]
+}
