@@ -1,0 +1,169 @@
+---
+title: blog post
+description: article layout with typography and metadata
+---
+
+import { Badge, Card, CardContent, Heading, Text, Separator, Button } from 'meridian';
+
+a blog post template demonstrating article layouts with proper typography hierarchy.
+
+## live demo
+
+<div style={{ background: 'var(--sl-color-bg)', border: '1px solid var(--sl-color-hairline)', padding: '2rem', marginBottom: '2rem' }}>
+
+<article style={{ maxWidth: '680px', margin: '0 auto' }}>
+
+{/* header */}
+<header style={{ marginBottom: '2rem' }}>
+  <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
+    <Badge variant="info" client:load>engineering</Badge>
+    <Badge client:load>tutorial</Badge>
+  </div>
+  <Heading level={1} client:load>building performant react applications</Heading>
+  <Text size="lg" muted style={{ marginTop: '0.5rem' }} client:load>
+    a deep dive into optimization techniques for production-ready react apps
+  </Text>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '1.5rem' }}>
+    <div style={{ width: '40px', height: '40px', background: 'var(--sl-color-hairline)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <Text size="sm" client:load>JD</Text>
+    </div>
+    <div>
+      <Text size="sm" client:load>john doe</Text>
+      <Text size="xs" muted client:load>january 14, 2026 · 8 min read</Text>
+    </div>
+  </div>
+</header>
+
+<Separator client:load />
+
+{/* content */}
+<div style={{ marginTop: '2rem' }}>
+  <Text client:load>
+    performance optimization in react applications requires understanding both the framework's 
+    internals and modern web platform capabilities. this guide covers practical techniques 
+    you can apply today.
+  </Text>
+
+  <Heading level={2} style={{ marginTop: '2rem' }} client:load>understanding re-renders</Heading>
+  <Text style={{ marginTop: '0.5rem' }} client:load>
+    react's reconciliation algorithm determines when components need to update. unnecessary 
+    re-renders are the most common performance bottleneck in react applications.
+  </Text>
+
+  <Card style={{ marginTop: '1.5rem', background: 'var(--sl-color-bg-nav)' }} client:load>
+    <CardContent client:load>
+      <Text size="sm" style={{ fontStyle: 'italic' }} client:load>
+        "premature optimization is the root of all evil, but we should not pass up our 
+        opportunities in that critical 3%." — donald knuth
+      </Text>
+    </CardContent>
+  </Card>
+
+  <Heading level={2} style={{ marginTop: '2rem' }} client:load>key techniques</Heading>
+  
+  <Heading level={3} style={{ marginTop: '1.5rem' }} client:load>1. memoization</Heading>
+  <Text style={{ marginTop: '0.5rem' }} client:load>
+    use React.memo for functional components and useMemo/useCallback hooks to prevent 
+    unnecessary recalculations and re-renders.
+  </Text>
+
+  <Heading level={3} style={{ marginTop: '1.5rem' }} client:load>2. code splitting</Heading>
+  <Text style={{ marginTop: '0.5rem' }} client:load>
+    lazy load components using React.lazy and Suspense to reduce initial bundle size 
+    and improve time-to-interactive metrics.
+  </Text>
+
+  <Heading level={3} style={{ marginTop: '1.5rem' }} client:load>3. virtualization</Heading>
+  <Text style={{ marginTop: '0.5rem' }} client:load>
+    for long lists, use windowing libraries like react-window to only render visible items, 
+    dramatically reducing DOM nodes.
+  </Text>
+
+  <Separator style={{ marginTop: '2rem' }} client:load />
+
+  <Heading level={2} style={{ marginTop: '2rem' }} client:load>conclusion</Heading>
+  <Text style={{ marginTop: '0.5rem' }} client:load>
+    performance optimization is an ongoing process. measure first, optimize second, and 
+    always validate your changes with real user data.
+  </Text>
+</div>
+
+{/* footer */}
+<footer style={{ marginTop: '3rem', paddingTop: '1.5rem', borderTop: '1px solid var(--sl-color-hairline)' }}>
+  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+    <div style={{ display: 'flex', gap: '0.5rem' }}>
+      <Badge client:load>react</Badge>
+      <Badge client:load>performance</Badge>
+      <Badge client:load>javascript</Badge>
+    </div>
+    <Button intent="ghost" client:load>share</Button>
+  </div>
+</footer>
+
+</article>
+
+</div>
+
+## code
+
+```tsx
+function BlogPost({ post }) {
+  return (
+    <article style={{ maxWidth: '680px', margin: '0 auto' }}>
+      {/* header */}
+      <header>
+        <div style={{ display: 'flex', gap: '0.5rem' }}>
+          {post.categories.map(cat => (
+            <Badge key={cat} variant="info">{cat}</Badge>
+          ))}
+        </div>
+        <Heading level={1}>{post.title}</Heading>
+        <Text size="lg" muted>{post.excerpt}</Text>
+        
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <Avatar src={post.author.avatar} />
+          <div>
+            <Text size="sm">{post.author.name}</Text>
+            <Text size="xs" muted>
+              {post.date} · {post.readTime} min read
+            </Text>
+          </div>
+        </div>
+      </header>
+
+      <Separator />
+
+      {/* content */}
+      <div>
+        <Text>{post.content.intro}</Text>
+        
+        {post.content.sections.map(section => (
+          <section key={section.id}>
+            <Heading level={2}>{section.title}</Heading>
+            <Text>{section.body}</Text>
+          </section>
+        ))}
+      </div>
+
+      {/* footer */}
+      <footer>
+        <div style={{ display: 'flex', gap: '0.5rem' }}>
+          {post.tags.map(tag => (
+            <Badge key={tag}>{tag}</Badge>
+          ))}
+        </div>
+        <Button intent="ghost">share</Button>
+      </footer>
+    </article>
+  );
+}
+```
+
+## typography tips
+
+- use `Heading` components for semantic hierarchy (h1 → h6)
+- limit line length to ~65-75 characters for readability
+- use `Text` with `muted` for secondary information
+- add adequate spacing between sections using margins
+- use `Separator` to create visual breaks between major sections
+

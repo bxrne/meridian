@@ -1,0 +1,178 @@
+---
+title: login form
+description: authentication forms with validation states
+---
+
+import { Button, Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, Heading, Text, Input, Label, Checkbox, Separator } from 'meridian';
+
+authentication form templates showing login, registration, and password reset patterns.
+
+## login
+
+<div style={{ background: 'var(--sl-color-bg)', border: '1px solid var(--sl-color-hairline)', padding: '2rem', marginBottom: '2rem', display: 'flex', justifyContent: 'center' }}>
+
+<Card style={{ width: '100%', maxWidth: '380px' }} client:load>
+  <CardHeader client:load>
+    <CardTitle client:load>sign in</CardTitle>
+    <CardDescription client:load>enter your credentials to continue</CardDescription>
+  </CardHeader>
+  <CardContent client:load>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <div>
+        <Label htmlFor="login-email" client:load>email</Label>
+        <Input id="login-email" type="email" placeholder="user@example.com" client:load />
+      </div>
+      <div>
+        <Label htmlFor="login-password" client:load>password</Label>
+        <Input id="login-password" type="password" placeholder="••••••••" client:load />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <Checkbox id="login-remember" client:load />
+        <Label htmlFor="login-remember" client:load>remember me</Label>
+      </div>
+    </div>
+  </CardContent>
+  <CardFooter style={{ flexDirection: 'column', gap: '0.75rem' }} client:load>
+    <Button intent="primary" style={{ width: '100%' }} client:load>sign in</Button>
+    <Button intent="ghost" style={{ width: '100%' }} client:load>forgot password?</Button>
+  </CardFooter>
+</Card>
+
+</div>
+
+## registration
+
+<div style={{ background: 'var(--sl-color-bg)', border: '1px solid var(--sl-color-hairline)', padding: '2rem', marginBottom: '2rem', display: 'flex', justifyContent: 'center' }}>
+
+<Card style={{ width: '100%', maxWidth: '380px' }} client:load>
+  <CardHeader client:load>
+    <CardTitle client:load>create account</CardTitle>
+    <CardDescription client:load>enter your details to get started</CardDescription>
+  </CardHeader>
+  <CardContent client:load>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+        <div>
+          <Label htmlFor="reg-first" client:load>first name</Label>
+          <Input id="reg-first" placeholder="john" client:load />
+        </div>
+        <div>
+          <Label htmlFor="reg-last" client:load>last name</Label>
+          <Input id="reg-last" placeholder="doe" client:load />
+        </div>
+      </div>
+      <div>
+        <Label htmlFor="reg-email" required client:load>email</Label>
+        <Input id="reg-email" type="email" placeholder="user@example.com" client:load />
+      </div>
+      <div>
+        <Label htmlFor="reg-password" required client:load>password</Label>
+        <Input id="reg-password" type="password" placeholder="min 8 characters" client:load />
+      </div>
+      <div>
+        <Label htmlFor="reg-confirm" required client:load>confirm password</Label>
+        <Input id="reg-confirm" type="password" placeholder="••••••••" client:load />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <Checkbox id="reg-terms" client:load />
+        <Label htmlFor="reg-terms" client:load>i agree to the terms and conditions</Label>
+      </div>
+    </div>
+  </CardContent>
+  <CardFooter client:load>
+    <Button intent="primary" style={{ width: '100%' }} client:load>create account</Button>
+  </CardFooter>
+</Card>
+
+</div>
+
+## validation states
+
+<div style={{ background: 'var(--sl-color-bg)', border: '1px solid var(--sl-color-hairline)', padding: '2rem', marginBottom: '2rem', display: 'flex', justifyContent: 'center' }}>
+
+<Card style={{ width: '100%', maxWidth: '380px' }} client:load>
+  <CardHeader client:load>
+    <CardTitle client:load>validation example</CardTitle>
+    <CardDescription client:load>showing error states</CardDescription>
+  </CardHeader>
+  <CardContent client:load>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <div>
+        <Label htmlFor="val-email" required client:load>email</Label>
+        <Input id="val-email" type="email" invalid placeholder="invalid@" client:load />
+        <Text size="xs" style={{ color: 'hsl(0, 72%, 44%)', marginTop: '0.25rem' }} client:load>please enter a valid email address</Text>
+      </div>
+      <div>
+        <Label htmlFor="val-password" required client:load>password</Label>
+        <Input id="val-password" type="password" invalid placeholder="abc" client:load />
+        <Text size="xs" style={{ color: 'hsl(0, 72%, 44%)', marginTop: '0.25rem' }} client:load>password must be at least 8 characters</Text>
+      </div>
+    </div>
+  </CardContent>
+  <CardFooter client:load>
+    <Button intent="primary" disabled style={{ width: '100%' }} client:load>sign in</Button>
+  </CardFooter>
+</Card>
+
+</div>
+
+## code
+
+```tsx
+function LoginForm() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState({});
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // validation logic
+  };
+
+  return (
+    <Card style={{ maxWidth: '380px' }}>
+      <CardHeader>
+        <CardTitle>sign in</CardTitle>
+        <CardDescription>enter your credentials</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <Label htmlFor="email">email</Label>
+            <Input 
+              id="email" 
+              type="email" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              invalid={!!errors.email}
+            />
+            {errors.email && (
+              <Text size="xs" style={{ color: 'var(--color-danger)' }}>
+                {errors.email}
+              </Text>
+            )}
+          </div>
+          <div>
+            <Label htmlFor="password">password</Label>
+            <Input 
+              id="password" 
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              invalid={!!errors.password}
+            />
+          </div>
+          <div>
+            <Checkbox id="remember" />
+            <Label htmlFor="remember">remember me</Label>
+          </div>
+        </form>
+      </CardContent>
+      <CardFooter>
+        <Button intent="primary" type="submit">sign in</Button>
+      </CardFooter>
+    </Card>
+  );
+}
+```
+

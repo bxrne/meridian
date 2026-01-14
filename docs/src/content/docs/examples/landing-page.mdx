@@ -1,0 +1,126 @@
+---
+title: landing page
+description: a marketing landing page template with hero, features, and call-to-action
+---
+
+import { Button, Badge, Card, CardHeader, CardTitle, CardDescription, CardContent, Heading, Text, Separator } from 'meridian';
+
+a complete landing page template demonstrating meridian's industrial aesthetic for marketing sites.
+
+## live demo
+
+<div style={{ background: 'var(--sl-color-bg)', border: '1px solid var(--sl-color-hairline)', padding: '2rem', marginBottom: '2rem' }}>
+
+{/* hero section */}
+<div style={{ textAlign: 'center', padding: '3rem 1rem', maxWidth: '600px', margin: '0 auto' }}>
+  <Badge variant="info" client:load>v0.1.0 released</Badge>
+  <Heading level={1} style={{ marginTop: '1rem' }} client:load>build interfaces that mean business</Heading>
+  <Text size="lg" muted style={{ marginTop: '1rem' }} client:load>
+    an industrial-grade component library for developers who value function over form. 
+    sharp edges. monospace type. zero compromise.
+  </Text>
+  <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', marginTop: '1.5rem' }}>
+    <Button intent="primary" client:load>get started</Button>
+    <Button intent="secondary" client:load>view docs</Button>
+  </div>
+</div>
+
+<Separator client:load />
+
+{/* features grid */}
+<div style={{ padding: '2rem 1rem' }}>
+  <Heading level={2} style={{ textAlign: 'center', marginBottom: '2rem' }} client:load>features</Heading>
+  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem' }}>
+    <Card client:load>
+      <CardHeader client:load>
+        <CardTitle client:load>zero runtime</CardTitle>
+        <CardDescription client:load>pure CSS styling</CardDescription>
+      </CardHeader>
+      <CardContent client:load>
+        <Text size="sm" client:load>no JavaScript overhead. styles applied via data attributes for maximum performance.</Text>
+      </CardContent>
+    </Card>
+    <Card client:load>
+      <CardHeader client:load>
+        <CardTitle client:load>typescript first</CardTitle>
+        <CardDescription client:load>full type safety</CardDescription>
+      </CardHeader>
+      <CardContent client:load>
+        <Text size="sm" client:load>complete type definitions with JSDoc documentation for every component.</Text>
+      </CardContent>
+    </Card>
+    <Card client:load>
+      <CardHeader client:load>
+        <CardTitle client:load>accessible</CardTitle>
+        <CardDescription client:load>ARIA compliant</CardDescription>
+      </CardHeader>
+      <CardContent client:load>
+        <Text size="sm" client:load>proper focus states, keyboard navigation, and screen reader support built in.</Text>
+      </CardContent>
+    </Card>
+  </div>
+</div>
+
+<Separator client:load />
+
+{/* cta section */}
+<div style={{ textAlign: 'center', padding: '3rem 1rem' }}>
+  <Heading level={2} client:load>ready to build?</Heading>
+  <Text muted style={{ marginTop: '0.5rem' }} client:load>get started in under 5 minutes</Text>
+  <div style={{ marginTop: '1.5rem' }}>
+    <Button intent="primary" client:load>install now</Button>
+  </div>
+</div>
+
+</div>
+
+## code
+
+```tsx
+function LandingPage() {
+  return (
+    <main>
+      {/* hero */}
+      <section style={{ textAlign: 'center', padding: '4rem 1rem' }}>
+        <Badge variant="info">v0.1.0 released</Badge>
+        <Heading level={1}>build interfaces that mean business</Heading>
+        <Text size="lg" muted>
+          an industrial-grade component library for developers
+        </Text>
+        <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center' }}>
+          <Button intent="primary">get started</Button>
+          <Button intent="secondary">view docs</Button>
+        </div>
+      </section>
+
+      <Separator />
+
+      {/* features */}
+      <section style={{ padding: '2rem 1rem' }}>
+        <Heading level={2}>features</Heading>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
+          <Card>
+            <CardHeader>
+              <CardTitle>zero runtime</CardTitle>
+              <CardDescription>pure CSS styling</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Text size="sm">no JavaScript overhead.</Text>
+            </CardContent>
+          </Card>
+          {/* more cards... */}
+        </div>
+      </section>
+
+      <Separator />
+
+      {/* cta */}
+      <section style={{ textAlign: 'center', padding: '4rem 1rem' }}>
+        <Heading level={2}>ready to build?</Heading>
+        <Button intent="primary">install now</Button>
+      </section>
+    </main>
+  );
+}
+```
+
