@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "astro dev",
-		"build": "bun run generate-props && astro build",
+		"build": "NODE_ENV=production bun run --cwd .. build && bun run generate-props && astro build",
 		"preview": "astro preview",
 		"generate-props": "bun scripts/generate-props.ts"
 	},
